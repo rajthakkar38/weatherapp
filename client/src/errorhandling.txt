@@ -1,0 +1,36 @@
+// 
+Code to handle the wrong input in text box. Not included in the working code.
+
+render(){
+    //console.log(this.state.weatherData)
+    let {error}=this.state.errorMessage;
+    console.log("error is"+error)
+    //let {pressure}=this.state.weatherData.pressure
+     let renderError=()=>{
+      if(error!= undefined){
+        return(
+          <p>Please type the correct city name</p>
+        )
+      }
+      else{
+        return(
+        <h1>Pressure : {this.state.weatherData.pressure}</h1>
+        )
+      }
+    }
+    return (
+      <div className="App">
+        <header className="App-header">
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Name:
+            <input type="text" value={this.state.city} onChange={this.handleChange}/>
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+        </header>
+        {renderError()}    
+      </div>
+    );
+  }
+  
